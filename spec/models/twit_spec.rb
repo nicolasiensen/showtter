@@ -17,7 +17,7 @@ describe Twit do
     end
 
     it "synchronizes event 1 and 2" do
-      Rockstar.stub(:events).with(:location => 'porto alegre').and_return([event1, event2])
+      Rockstar::Geo.stub(:new).and_return(mock(Rockstar::Geo, :events => [event1, event2]))
       Twit.sync
       Twit.all.map{|t| t.lastfm_id}.should be_== [event1.eid, event2.eid]
     end
@@ -28,7 +28,7 @@ describe Twit do
       end
 
       it "synchronizes just event2" do
-        Rockstar.stub(:events).with(:location => 'porto alegre').and_return([event1, event2])
+        Rockstar::Geo.stub(:new).and_return(mock(Rockstar::Geo, :events => [event1, event2]))
         Twit.sync
         Twit.all.map{|t| t.lastfm_id}.should be_== [event1.eid, event2.eid]
       end

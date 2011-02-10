@@ -5,7 +5,7 @@ class Twit < ActiveRecord::Base
   before_create {|twit| Twitter.update twit.message}
 
   def self.sync
-    Rockstar.events(:location => 'porto alegre').each do |event|
+    Rockstar::Geo.new.events(:location => 'porto alegre').each do |event|
       Twit.create :lastfm_id => event.eid, :message => Twit.message(event)
     end
   end
