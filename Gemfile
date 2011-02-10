@@ -30,5 +30,9 @@ gem 'pg'
 #   gem 'webrat'
 # end
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
+gem "shoulda", :group => [:development, :test]
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
+gem "rockstar"
+gem "twitter"
+gem "bitly"
